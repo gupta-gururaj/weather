@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <style>
+        table {
+            width: 250px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 100px;
+        }
+        form { 
+            margin: 0 auto; 
+            width:250px;
+        }
+    </style>
+    <title>
+        Data Display
+    </title>
+</head>
+
+<body>
+    {{if .Success}}
+    <form method="POST" text>
+        <label style="margin-top: 10px;">Enter City or Country </label><br />
+        <input type="text" name="city" style="margin-bottom: 10px;"><br />
+        <input type="submit"> 
+    </form>
+    {{else}}
+    <table border="1px" cellspacing="auto" cellpadding="auto" >
+        <thead style="background-color: lightsteelblue; ">
+            <tr class="table">
+                <th>Name</th>
+                <th>Country</th>
+                <th>Temprature (Celsius)</th>
+                <th>Humidity</th>
+                <th>Wind (kph)</th>
+                <th>Wind Degree</th>
+                <th>Localtime</th>
+                <th>Condition</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> {{.Location.Name}}</td>
+                <td> {{.Location.Country}}</td>
+                <td> {{.Current.TempC}}</td>
+                <td> {{.Current.Humidity}}</td>
+                <td>{{.Current.WindKph}}</td>
+                <td>{{.Current.WindDegree}}</td>
+                <td>{{.Location.Localtime}}</td>
+                <td><img src="{{.Current.Condition.Icon}}" /></td>
+            </tr>
+        </tbody>
+    </table>
+    {{end}}
+</body>
+</html>
