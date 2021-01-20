@@ -31,13 +31,15 @@
 </head>
 
 <body>
-    {{if .Success}}
+    {{if not .Check}} 
+    <h3 class="text-center" style="color:rgb(148, 122, 122);"> {{.Error.Message}} </h3>  <br>
+    {{end}} 
     <form method="POST" text>
         <label style="margin-top: 10px;">Enter City or Country </label><br />
         <input type="text" name="city" style="margin-bottom: 10px;"><br />
         <input type="submit"> 
     </form>
-    {{else}}
+    {{if .Check}}
     <table border="1px" cellspacing="auto" cellpadding="auto" >
         <thead style="background-color: lightsteelblue; ">
             <tr class="table">
